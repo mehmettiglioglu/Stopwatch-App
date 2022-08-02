@@ -1,7 +1,9 @@
+// Saat, dakika ve gün yazılacak yerleri tanımladım
 let sec=document.querySelector("#sec");
 let min=document.querySelector("#min");
 let hour=document.querySelector("#hours")
 
+//Buttonları tanımladım
 let start=document.querySelector("#start");
 let pause=document.querySelector("#pause");
 let reset=document.querySelector("#reset");
@@ -11,6 +13,8 @@ let second=0;
 let minute=0;
 let hours=0;
 let interval=null;
+
+// Start button eventi
 
 start.addEventListener("click",()=>{
    if(interval!==null){
@@ -42,19 +46,22 @@ start.addEventListener("click",()=>{
         
    document.title=`${hours<10?"0"+hours:hours}:${minute<10?"0"+minute:minute}:${second<10?"0"+second:second}`
    
-    }, 10);
+    }, 1000);
 })
 
+// Pause button click eventi
 pause.addEventListener("click",()=>{
     clearInterval(interval)
+    // Kullanıcı pause buttonuna bastığında o anki yazan değer LocalStorage ile saklanır.
 
     localStorage.setItem("second",JSON.parse(second));
     localStorage.setItem("minute",JSON.parse(minute));
     localStorage.setItem("hour",JSON.parse(hours));
 })
-
+// Reset button click eventi
 reset.addEventListener("click",()=>{
     clearInterval(interval)
+    // Kullanıcı reset buttonuna bastığında o anki yazan değer LocalStorage ile saklanır.
     localStorage.setItem("second",JSON.parse(second));
     localStorage.setItem("minute",JSON.parse(minute));
     localStorage.setItem("hour",JSON.parse(hours));
@@ -68,7 +75,11 @@ reset.addEventListener("click",()=>{
     hour.innerHTML="00"
 })
 
+// Bring button click eventi
 bring.addEventListener("click",()=>{
+
+    // Pause veya reset buttonuna basıldığı zaman saklanan değerler bring back buttonuna basıldığında kullanıcının ekranına geri getirir ve starta basıldığında zaman devam eder.
+
     second=localStorage.getItem("second");
     minute=localStorage.getItem("minute");
     hours=localStorage.getItem("hour");

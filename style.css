@@ -27,11 +27,8 @@ h1{
 .buttons button{
   border-radius:4px ;
 }
-body{
-  background-image: url("");
-}
 .photo{
-  background-image:url(/rGoDHw.webp);
+  background-image:url(image/rGoDHw.webp);
   position: absolute;
   left:0;
   top: 0;
